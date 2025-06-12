@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>نظام مواعيد المركز</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+</head>
+<body>
+  <!-- ====== HEADER ====== -->
+  <header class="topbar">
+    <img src="assets/logo.png" alt="شعار المركز" class="logo" />
+    <h1>نظام مواعيد المركز</h1>
+  </header>
+
+  <!-- ====== TABS ====== -->
+  <nav class="tabs">
+    <button data-tab="children" class="active">الأطفال</button>
+    <button data-tab="specialists">الأخصائيون</button>
+    <button data-tab="appointments">المواعيد</button>
+    <button data-tab="reports">التقارير</button>
+  </nav>
+
+  <!-- ====== CONTAINERS ====== -->
+  <main>
+    <!-- 1. إدارة الأطفال -->
+    <section id="children" class="tab-content active">
+      <h2>١. إدارة الأطفال والاشتراكات</h2>
+      <button id="btnAddChild">إضافة طفل جديد</button>
+      <table id="tblChildren">
+        <thead>
+          <tr>
+            <th>#</th><th>اسم الطفل</th><th>البكيج</th><th>تاريخ البدء</th>
+            <th>الجلسات الكليّة</th><th>المتبقية</th><th>الحالة</th><th>الإجراءات</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- 2. إدارة الأخصائيين -->
+    <section id="specialists" class="tab-content">
+      <h2>٢. إدارة الأخصائيين</h2>
+      <button id="btnAddSpec">إضافة أخصائي جديد</button>
+      <table id="tblSpecs">
+        <thead>
+          <tr>
+            <th>#</th><th>اسم</th><th>البريد</th><th>القسم</th><th>أيام العمل</th><th>الإجراءات</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- 3. حجز المواعيد -->
+    <section id="appointments" class="tab-content">
+      <h2>٣. حجز المواعيد</h2>
+      <button id="btnAutoScheduleAll">جدولة تلقائية لجميع الأطفال</button>
+      <table id="tblAppts">
+        <thead>
+          <tr>
+            <th>#</th><th>الطفل</th><th>التاريخ</th><th>الوقت</th>
+            <th>القسم</th><th>الأخصائي</th><th>النوع</th><th>الحالة</th><th>إجراءات</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- 4. التقارير -->
+    <section id="reports" class="tab-content">
+      <h2>٤. التقارير</h2>
+      <div id="reportEnding"></div>
+      <div id="reportPaused"></div>
+    </section>
+  </main>
+
+  <!-- مودالات الإضافة/التعديل -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h3 id="modalTitle"></h3>
+      <form id="modalForm"></form>
+      <div class="modal-buttons">
+        <button id="modalSave">حفظ</button>
+        <button id="modalCancel">إلغاء</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- سكربت Firebase Config -->
+  <script src="js/firebase-config.js"></script>
+  <!-- الكود الرئيسي -->
+  <script src="js/main.js"></script>
+</body>
+</html>
